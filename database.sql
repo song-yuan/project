@@ -92,16 +92,22 @@ CREATE TABLE IF NOT EXISTS `nb_sites` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `nb_users`
+-- 表的结构 `nb_user`
 --
+CREATE TABLE IF NOT EXISTS `nb_user` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `username` varchar(50) NOT NULL DEFAULT '',
+      `password_hash` varchar(60) NOT NULL DEFAULT '',
+      `password_reset_token` varchar(255) NOT NULL DEFAULT '',
+      `staff_no` varchar(20) NOT NULL DEFAULT '',
+      `company_id` int(10) unsigned NOT NULL DEFAULT '0',
+      `email` varchar(255) NOT NULL DEFAULT '',
+      `auth_key` varchar(255) NOT NULL DEFAULT '',
+      `role` int(10) unsigned NOT NULL DEFAULT '0',
+      `status` int(10) unsigned NOT NULL DEFAULT '0',
+      `create_at` int(10) unsigned NOT NULL DEFAULT '0',
+      `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      `password` varchar(20) NOT NULL DEFAULT '',
+      PRIMARY KEY (`id`)
 
-CREATE TABLE IF NOT EXISTS `nb_users` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(50) NOT NULL DEFAULT '',
-  `user_type` tinyint(4) NOT NULL DEFAULT '0',
-  `staff_no` varchar(20) NOT NULL DEFAULT '',
-  `company_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
