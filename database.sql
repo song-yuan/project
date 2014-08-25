@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `nb_company` (
 CREATE TABLE IF NOT EXISTS `nb_company_wifi` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(10) unsigned NOT NULL DEFAULT 0,
-  `micid` varchar(50) NOT NULL DEFAULT '',
+  `macid` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
