@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `nb_companies`
+-- 表的结构 `nb_company`
 --
 
-CREATE TABLE IF NOT EXISTS `nb_companies` (
+CREATE TABLE IF NOT EXISTS `nb_company` (
   `company_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `company_name` varchar(50) NOT NULL DEFAULT '',
   `logo` varchar(255) NOT NULL DEFAULT '',
@@ -30,14 +30,26 @@ CREATE TABLE IF NOT EXISTS `nb_companies` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `nb_orders`
+-- 表的结构 `nb_company_wifi`
 --
 
-CREATE TABLE IF NOT EXISTS `nb_orders` (
+CREATE TABLE IF NOT EXISTS `nb_company_wifi` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `company_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `micid` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `nb_order`
+--
+
+CREATE TABLE IF NOT EXISTS `nb_order` (
   `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `site_id` int(10) unsigned NOT NULL,
-  `order_no` varchar(20) NOT NULL DEFAULT '',
+  `site_no_id` int(10) unsigned NOT NULL,
   `order_status` tinyint(4) NOT NULL DEFAULT '0',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0',
   `pay_time` int(10) unsigned NOT NULL DEFAULT '0',
@@ -45,12 +57,27 @@ CREATE TABLE IF NOT EXISTS `nb_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
+--
+-- 表的结构 `nb_site_no`
+--
+
+CREATE TABLE IF NOT EXISTS `nb_site_no` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `company_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `site_id` int(10) unsigned NOT NULL,
+  `waiter_id` int unsigned NOT NULL,
+  `code` varchar(10) NOT DEFAULT '',
+  `delete_falg` tinyint unsigned not null default 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- 表的结构 `nb_order_products`
+-- 表的结构 `nb_order_product`
 --
 
-CREATE TABLE IF NOT EXISTS `nb_order_products` (
+CREATE TABLE IF NOT EXISTS `nb_order_product` (
   `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(10) unsigned NOT NULL DEFAULT '0',
   `product_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -62,29 +89,30 @@ CREATE TABLE IF NOT EXISTS `nb_order_products` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `nb_products`
+-- 表的结构 `nb_product`
 --
 
-CREATE TABLE IF NOT EXISTS `nb_products` (
+CREATE TABLE IF NOT EXISTS `nb_product` (
   `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL DEFAULT '',
+  `main_picture` varchar(255) NOT NULL DEFAULT '',
   `company_id` int(10) unsigned NOT NULL DEFAULT '0',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0',
   `delete_flag` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `price` decimal(12,0) NOT NULL DEFAULT '0',
+  `recommend` tinyint unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `nb_sites`
+-- 表的结构 `nb_site`
 --
 
-CREATE TABLE IF NOT EXISTS `nb_sites` (
+CREATE TABLE IF NOT EXISTS `nb_site` (
   `site_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `site_no` varchar(50) NOT NULL DEFAULT '',
-  `qrcode` varchar(255) NOT NULL DEFAULT '',
+  `serial` varchar(50) NOT NULL DEFAULT '',
   `company_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`site_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
