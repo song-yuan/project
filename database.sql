@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `nb_site_no` (
   `company_id` int(10) unsigned NOT NULL DEFAULT '0',
   `site_id` int(10) unsigned NOT NULL,
   `waiter_id` int unsigned NOT NULL,
-  `code` varchar(10) NOT DEFAULT '',
+  `code` varchar(10) NOT NULL DEFAULT '',
   `delete_falg` tinyint unsigned not null default 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
