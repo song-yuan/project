@@ -135,7 +135,8 @@ CREATE TABLE IF NOT EXISTS `nb_user` (
       `status` int(10) unsigned NOT NULL DEFAULT '0',
       `create_at` int(10) unsigned NOT NULL DEFAULT '0',
       `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      `password` varchar(20) NOT NULL DEFAULT '',
       PRIMARY KEY (`id`)
 
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+INSERT INTO `nb_user` (`id`, `username`, `password_hash`, `password_reset_token`, `staff_no`, `company_id`, `email`, `auth_key`, `role`, `status`, `create_at`, `update_at`) VALUES
+(2, 'admin', '$2y$13$mnsscQgwuveH.EqDgDkcCedM2XH6T3OSmxQU/oKFO9J.ngaLMXrgm', 'asdasd', '100', 0, 'a@a.com', 'adasd', 1, 10, 0, '2014-08-25 08:08:21');
