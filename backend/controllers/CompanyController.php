@@ -5,6 +5,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\backend\models\Company;
 
 class CompanyController extends \yii\web\Controller
 {
@@ -19,7 +20,7 @@ class CompanyController extends \yii\web\Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -37,5 +38,12 @@ class CompanyController extends \yii\web\Controller
     {
         return $this->render('index');
     }
-
+	public function actionCreate(){
+		$model = new \backend\models\Company();
+		
+		if($model->load($_POST) && $model->validate()) {
+			var_dump($model);exit;
+		}
+		return $this->render('create',['model'=>$model]);
+	}
 }

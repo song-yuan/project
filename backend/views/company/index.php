@@ -33,59 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 	<!-- /.modal -->
 	<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-	<!-- BEGIN STYLE CUSTOMIZER -->
-	<div class="theme-panel hidden-xs hidden-sm">
-		<div class="toggler"></div>
-		<div class="toggler-close"></div>
-		<div class="theme-options">
-			<div class="theme-option theme-colors clearfix">
-				<span>THEME COLOR</span>
-				<ul>
-					<li class="color-black current color-default" data-style="default"></li>
-					<li class="color-blue" data-style="blue"></li>
-					<li class="color-brown" data-style="brown"></li>
-					<li class="color-purple" data-style="purple"></li>
-					<li class="color-grey" data-style="grey"></li>
-					<li class="color-white color-light" data-style="light"></li>
-				</ul>
-			</div>
-			<div class="theme-option">
-				<span>Layout</span>
-				<select class="layout-option form-control input-small">
-					<option value="fluid" selected="selected">Fluid</option>
-					<option value="boxed">Boxed</option>
-				</select>
-			</div>
-			<div class="theme-option">
-				<span>Header</span>
-				<select class="header-option form-control input-small">
-					<option value="fixed" selected="selected">Fixed</option>
-					<option value="default">Default</option>
-				</select>
-			</div>
-			<div class="theme-option">
-				<span>Sidebar</span>
-				<select class="sidebar-option form-control input-small">
-					<option value="fixed">Fixed</option>
-					<option value="default" selected="selected">Default</option>
-				</select>
-			</div>
-			<div class="theme-option">
-				<span>Footer</span>
-				<select class="footer-option form-control input-small">
-					<option value="fixed">Fixed</option>
-					<option value="default" selected="selected">Default</option>
-				</select>
-			</div>
-		</div>
-	</div>
-	<!-- END BEGIN STYLE CUSTOMIZER -->            
 	<!-- BEGIN PAGE HEADER-->
 	<div class="row">
 		<div class="col-md-12">
 			<!-- BEGIN PAGE TITLE & BREADCRUMB-->			
 			<h3 class="page-title">
-				Managed Tables					<small>managed table samples</small>
+				Managed Tables
+				<small>managed table samples</small>
 			</h3>
 			<ul class="page-breadcrumb breadcrumb">
 				<li class="btn-group">
@@ -123,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="portlet-title">
 					<div class="caption"><i class="fa fa-globe"></i>Managed Table</div>
 					<div class="actions">
-						<a href="#" class="btn blue"><i class="fa fa-pencil"></i> Add</a>
+						<a href="<?php echo \Yii::$app->urlManager->createUrl(['company/create']);?>" class="btn blue"><i class="fa fa-pencil"></i> Add</a>
 						<div class="btn-group">
 							<a class="btn green" href="#" data-toggle="dropdown">
 							<i class="fa fa-cogs"></i> Tools
