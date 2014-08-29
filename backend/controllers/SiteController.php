@@ -70,6 +70,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+        	\Yii::$app->session->setFlash('error' , 'login error');
             return $this->render('login', [
                 'model' => $model,
             ]);

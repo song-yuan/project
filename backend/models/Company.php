@@ -10,6 +10,13 @@ use Yii;
  * @property integer $company_id
  * @property string $company_name
  * @property string $logo
+ * @property string $contact_name
+ * @property string $mobile
+ * @property string $telephone
+ * @property string $email
+ * @property string $homepage
+ * @property integer $create_time
+ * @property integer $delete_flag
  */
 class Company extends \yii\db\ActiveRecord
 {
@@ -27,10 +34,19 @@ class Company extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_name'], 'string', 'max' => 50],
-            [['company_name'], 'required'],
+            [['create_time', 'delete_flag'], 'integer'],
+            [['company_name', 'email'], 'string', 'max' => 50],
+            [['logo', 'homepage'], 'string', 'max' => 255],
+            [['contact_name', 'mobile', 'telephone'], 'string', 'max' => 20],
             
-            [['logo'], 'string', 'max' => 255]
+            [['company_name', 'contact_name', 'mobile'], 'required'],
+            [['company_name'], 'unique', 'message'=>'公司名称已经存在'],
+            
+            [['mobile'], 'match','pattern'=>'/^[1][358]\d{9}$/','message'=>'请填写有效的手机号码'],
+            [['telephone'], 'match','pattern'=>'/(^[0-9]{3,4}[0-9]{7,8}$)|(^[0-9]{3,4}\-[0-9]{7,8}$)|(^0{0,1}13[0-9]{9}$)/','message'=>'请填写有效的电话号码'],
+			[['email'], 'email'],
+            [['homepage'], 'match','pattern'=>'/^(http:\/\/([\w-]+\.)+[\w-]+(\/[\w- \.\/?%&=]*)?)$/','message'=>'请填写有效的网址'],
+            
         ];
     }
 
@@ -43,6 +59,13 @@ class Company extends \yii\db\ActiveRecord
             'company_id' => Yii::t('app', 'Company ID'),
             'company_name' => Yii::t('app', 'Company Name'),
             'logo' => Yii::t('app', 'Logo'),
+            'contact_name' => Yii::t('app', 'Contact Name'),
+            'mobile' => Yii::t('app', 'Mobile'),
+            'telephone' => Yii::t('app', 'Telephone'),
+            'email' => Yii::t('app', 'Email'),
+            'homepage' => Yii::t('app', 'Homepage'),
+            'create_time' => Yii::t('app', 'Create Time'),
+            'delete_flag' => Yii::t('app', 'Delete Flag'),
         ];
     }
 }

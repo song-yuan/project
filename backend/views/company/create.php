@@ -6,10 +6,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = '添加新公司';
+$this->title = $model->isNewRecord ? '添加新公司' : '修改公司信息' ;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 	<!-- BEGIN PAGE -->  
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->               
@@ -82,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<?php $form = ActiveForm::begin(['id' => 'company-form','options' => ['class' => 'form-horizontal']]); ?>
+							<?php $form = ActiveForm::begin(['id' => 'company-form','options' => ['class' => 'form-horizontal','enctype' => 'multipart/form-data']]); ?>
 								<div class="form-body">
 									<div class="form-group">
 										<?php echo Html::activeLabel($model, 'company_name',['class' => 'col-md-3 control-label']);?>
@@ -92,22 +91,53 @@ $this->params['breadcrumbs'][] = $this->title;
 										</div>
 									</div>
 									<div class="form-group">
-										<label  class="col-md-3 control-label">Input With Spinner</label>
+										<?php echo Html::activeLabel($model, 'logo',['class' => 'col-md-3 control-label']);?>
 										<div class="col-md-4">
-											<input type="password" class="form-control" placeholder="Password">
+											<?php echo Html::activeFileInput($model, 'logo',['class' => 'form-control','placeholder'=>$model->getAttributeLabel('logo')]);?>
+											<?php echo Html::error($model, 'logo' , ['tag' => 'span','class' => 'error'])?>
+										</div>
+									</div>
+									<div class="form-group">
+										<?php echo Html::activeLabel($model, 'contact_name',['class' => 'col-md-3 control-label']);?>
+										<div class="col-md-4">
+											<?php echo Html::activeInput('text',$model, 'contact_name',['class' => 'form-control','placeholder'=>$model->getAttributeLabel('contact_name')]);?>
+											<?php echo Html::error($model, 'contact_name' , ['tag' => 'span','class' => 'error'])?>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<?php echo Html::activeLabel($model, 'mobile',['class' => 'col-md-3 control-label']);?>
+										<div class="col-md-4">
+											<?php echo Html::activeInput('text',$model, 'mobile',['class' => 'form-control','placeholder'=>$model->getAttributeLabel('mobile')]);?>
+											<?php echo Html::error($model, 'mobile' , ['tag' => 'span','class' => 'error'])?>
+										</div>
+									</div>
+									<div class="form-group">
+										<?php echo Html::activeLabel($model, 'telephone',['class' => 'col-md-3 control-label']);?>
+										<div class="col-md-4">
+											<?php echo Html::activeInput('text',$model, 'telephone',['class' => 'form-control','placeholder'=>$model->getAttributeLabel('telephone')]);?>
+											<?php echo Html::error($model, 'telephone' , ['tag' => 'span','class' => 'error'])?>
+										</div>
+									</div>
+									<div class="form-group">
+										<?php echo Html::activeLabel($model, 'email',['class' => 'col-md-3 control-label']);?>
+										<div class="col-md-4">
+											<?php echo Html::activeInput('text',$model, 'email',['class' => 'form-control','placeholder'=>$model->getAttributeLabel('email')]);?>
+											<?php echo Html::error($model, 'email' , ['tag' => 'span','class' => 'error'])?>
 										</div>
 									</div>
 									<div class="form-group last">
-										<label  class="col-md-3 control-label">Static Control</label>
+										<?php echo Html::activeLabel($model, 'homepage',['class' => 'col-md-3 control-label']);?>
 										<div class="col-md-4">
-											<p class="form-control-static">email@example.com</p>
+											<?php echo Html::activeInput('text',$model, 'homepage',['class' => 'form-control','placeholder'=>$model->getAttributeLabel('homepage')]);?>
+											<?php echo Html::error($model, 'homepage' , ['tag' => 'span','class' => 'error'])?>
 										</div>
 									</div>
 								</div>
 								<div class="form-actions fluid">
 									<div class="col-md-offset-3 col-md-9">
-										<button type="submit" class="btn blue">Submit</button>
-										<button type="button" class="btn default">Cancel</button>                              
+										<button type="submit" class="btn blue">确定</button>
+										<a href="<?php echo \Yii::$app->urlManager->createUrl(['company/index']);?>" class="btn default">返回</a>                              
 									</div>
 								</div>
 							<?php ActiveForm::end(); ?>

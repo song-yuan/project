@@ -6,6 +6,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\backend\models\Company;
+use common\Func;
 
 class CompanyController extends \yii\web\Controller
 {
@@ -20,7 +21,7 @@ class CompanyController extends \yii\web\Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index','create'],
+                        'actions' => ['logout', 'index','create','update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -36,14 +37,45 @@ class CompanyController extends \yii\web\Controller
     }
 	public function actionIndex()
     {
-        return $this->render('index');
+    	$list = Func::getList(\backend\models\Company::find());
+        return $this->render('index',$list);
     }
 	public function actionCreate(){
 		$model = new \backend\models\Company();
-		
 		if($model->load($_POST) && $model->validate()) {
-			var_dump($model);exit;
+			if($model->save()){
+				Func::uploadImage($model, 'logo');
+				$model->save();
+				\Yii::$app->session->setFlash('success','create successful');
+				\Yii::$app->response->redirect(array('company/index'));
+			}
+		}
+		return $this->render('create',['model' => $model]);
+	}
+	public function actionUpdate($companyId){
+		$model = $this->findModel($companyId);
+		if($model->load($_POST) && $model->validate()) {
+			Func::uploadImage($model, 'logo');
+			if($model->save()){
+				\Yii::$app->session->setFlash('success','update successful');
+				\Yii::$app->response->redirect(array('company/index'));
+			}
 		}
 		return $this->render('create',['model'=>$model]);
 	}
+	public function actionFreeze() {
+		
+	}
+	public function actionUnfreaze(){
+		
+	}
+	protected function findModel($companyId)
+	{
+		if (($model = \backend\models\Company::findOne($companyId)) !== null) {
+			return $model;
+		} else {
+			throw new NotFoundHttpException('The requested page does not exist.');
+		}
+	}
+	
 }

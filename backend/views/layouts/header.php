@@ -1,6 +1,7 @@
 	<?php 
 	use yii\bootstrap\Nav;
 	use yii\bootstrap\NavBar;
+	use yii\web\View;
 	?>	
 	<!-- BEGIN HEADER -->   
 	<div class="header navbar navbar-inverse navbar-fixed-top">
