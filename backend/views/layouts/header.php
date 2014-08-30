@@ -9,12 +9,12 @@
 		<div class="header-inner">
 			<!-- BEGIN LOGO -->  
 			<a class="navbar-brand" href="index.html">
-			<img src="assets/img/logo.png" alt="logo" class="img-responsive" />
+			<img src="img/logo.png" alt="logo" class="img-responsive" />
 			</a>
 			<!-- END LOGO -->
 			<!-- BEGIN RESPONSIVE MENU TOGGLER --> 
 			<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<img src="assets/img/menu-toggler.png" alt="" />
+			<img src="img/menu-toggler.png" alt="" />
 			</a> 
 			<!-- END RESPONSIVE MENU TOGGLER -->
 			<!-- BEGIN TOP NAVIGATION MENU -->
@@ -118,7 +118,7 @@
 							<ul class="dropdown-menu-list scroller" style="height: 250px;">
 								<li>  
 									<a href="inbox.html?a=view">
-									<span class="photo"><img src="./assets/img/avatar2.jpg" alt=""/></span>
+									<span class="photo"><img src="img/avatar2.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Lisa Wong</span>
 									<span class="time">Just Now</span>
@@ -131,7 +131,7 @@
 								</li>
 								<li>  
 									<a href="inbox.html?a=view">
-									<span class="photo"><img src="./assets/img/avatar3.jpg" alt=""/></span>
+									<span class="photo"><img src="img/avatar3.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Richard Doe</span>
 									<span class="time">16 mins</span>
@@ -144,7 +144,7 @@
 								</li>
 								<li>  
 									<a href="inbox.html?a=view">
-									<span class="photo"><img src="./assets/img/avatar1.jpg" alt=""/></span>
+									<span class="photo"><img src="img/avatar1.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Bob Nilson</span>
 									<span class="time">2 hrs</span>
@@ -157,7 +157,7 @@
 								</li>
 								<li>  
 									<a href="inbox.html?a=view">
-									<span class="photo"><img src="./assets/img/avatar2.jpg" alt=""/></span>
+									<span class="photo"><img src="img/avatar2.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Lisa Wong</span>
 									<span class="time">40 mins</span>
@@ -169,7 +169,7 @@
 								</li>
 								<li>  
 									<a href="inbox.html?a=view">
-									<span class="photo"><img src="./assets/img/avatar3.jpg" alt=""/></span>
+									<span class="photo"><img src="img/avatar3.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Richard Doe</span>
 									<span class="time">46 mins</span>
@@ -302,7 +302,7 @@
 				<!-- BEGIN USER LOGIN DROPDOWN -->
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" src="assets/img/avatar1_small.jpg"/>
+					<img alt="" src="img/avatar1_small.jpg"/>
 					<span class="username">Bob Nilson</span>
 					<i class="fa fa-angle-down"></i>
 					</a>
