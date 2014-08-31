@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "nb_company".
@@ -18,7 +19,7 @@ use Yii;
  * @property integer $create_time
  * @property integer $delete_flag
  */
-class Company extends \yii\db\ActiveRecord
+class Company extends \common\base\BaseModel
 {
     /**
      * @inheritdoc

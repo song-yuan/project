@@ -51,7 +51,7 @@
 					</a>
 				</li>
 				<li class="start ">
-					<a href="<?php echo \Yii::$app->urlManager->createUrl(['site/index']);?>">
+					<a href="<?php echo \Yii::$app->urlManager->createUrl(['user/index','companyId'=>\Yii::$app->params['companyId']]);?>">
 					<i class="fa fa-user"></i> 
 					<span class="title">操作员管理</span>					
 					</a>

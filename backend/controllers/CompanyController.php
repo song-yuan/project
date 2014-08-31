@@ -3,7 +3,6 @@
 namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\backend\models\Company;
 use common\base;
@@ -37,7 +36,8 @@ class CompanyController extends \common\base\BackendController
     }
 	public function actionIndex()
     {
-    	$list = \common\base\Func::getList(\backend\models\Company::find());
+    	$query = \backend\models\Company::find();
+    	$list = \common\base\Func::getList($query);
         return $this->render('index',$list);
     }
 	public function actionCreate(){

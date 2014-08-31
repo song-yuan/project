@@ -101,6 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								<th>电话</th>
 								<th >email</th>
 								<th >创建时间</th>
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -108,12 +109,27 @@ $this->params['breadcrumbs'][] = $this->title;
 							<tr class="odd gradeX">
 								<td><input type="checkbox" class="checkboxes" value="<?php echo $model->company_id;?>" name="companyIds[]" /></td>
 								<td><a href="<?php echo \Yii::$app->urlManager->createUrl(['company/update','companyId' => $model->company_id]);?>" ><?php echo $model->company_name;?></a></td>
-								<td ><?php echo $model->logo;?></td>
+								<td ><img width="100" src="<?php echo $model->logo;?>" /></td>
 								<td ><?php echo $model->contact_name;?></td>
 								<td ><?php echo $model->mobile;?></td>
 								<td ><?php echo $model->telephone;?></td>
 								<td ><?php echo $model->email;?></td>
-								<td class="center"><?php echo date('Y-m-d H:i:s',$model->create_time);?></td>
+								<td><?php echo date('Y-m-d H:i:s',$model->create_time);?></td>
+								<td class="center">
+									<div class="btn-group">
+										<a class="btn green" href="#" data-toggle="dropdown">
+										操作
+										<i class="fa fa-angle-down"></i>
+										</a>
+										<ul class="dropdown-menu pull-right">
+											<li><a href="<?php echo \Yii::$app->urlManager->createUrl(['user/index' , 'companyId' => $model->company_id]);?>">管理员</a></li>
+											<li><a href="#">位置</a></li>
+											<li><a href="#">订单</a></li>
+											<li><a href="#">产品</a></li>
+											<li><a href="#">管理员</a></li>
+										</ul>
+									</div>
+								</td>
 							</tr>
 						<?php endforeach;?>
 						</tbody>
@@ -122,27 +138,5 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 			<!-- END EXAMPLE TABLE PORTLET-->
 		</div>
-			<?php if(Yii::$app->session->hasFlash('success')):?>
-	<div class="mymodel" id="message">
-		<div class="alert alert-success col-md-12">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-			<div class="text">
-				<strong>123</strong>
-			</div>
-		</div>
-	</div>
-	<?php $this->registerJs('$("#message").animate({opacity: 0}, 2000).fadeOut(500);',View::POS_END);?>
-	<?php elseif(Yii::$app->session->hasFlash('error')):?>
-	<div class="mymodel" id="message">
-		<div class="alert alert-danger col-md-12">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-			<div class="text">
-				<strong><?php echo Yii::app()->admin->getFlash('error'); ?></strong>
-			</div>
-		</div>
-	</div>
-	<?php $this->registerJs('$("#message").animate({opacity: 0}, 2000).fadeOut(500);',View::POS_END);?>
-	<?php endif;?>
-		
 	</div>
 	<!-- END PAGE CONTENT-->
