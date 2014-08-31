@@ -62,12 +62,9 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        	return $this->redirect(['site/index']);
             return $this->goBack();
         } else {
         	\Yii::$app->session->setFlash('error' , 'login error');

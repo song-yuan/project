@@ -1,5 +1,5 @@
 <?php
-namespace common;
+namespace common\base;
 use yii\data\Pagination;
 use yii\web\UploadedFile;
 class Func {

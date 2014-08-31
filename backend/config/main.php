@@ -7,6 +7,7 @@ $params = array_merge(
 );
 
 return [
+	'homeUrl' => 'index.php?r=site/login',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

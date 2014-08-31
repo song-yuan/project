@@ -6,9 +6,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\backend\models\Company;
-use common\Func;
+use common\base;
 
-class CompanyController extends \yii\web\Controller
+class CompanyController extends \common\base\BackendController
 {
 	public $layout = 'listLayout';
     /**
@@ -37,10 +37,11 @@ class CompanyController extends \yii\web\Controller
     }
 	public function actionIndex()
     {
-    	$list = Func::getList(\backend\models\Company::find());
+    	$list = \common\base\Func::getList(\backend\models\Company::find());
         return $this->render('index',$list);
     }
 	public function actionCreate(){
+		$this->layout = 'formLayout';
 		$model = new \backend\models\Company();
 		if($model->load($_POST) && $model->validate()) {
 			if($model->save()){
@@ -53,6 +54,7 @@ class CompanyController extends \yii\web\Controller
 		return $this->render('create',['model' => $model]);
 	}
 	public function actionUpdate($companyId){
+		$this->layout = 'formLayout';
 		$model = $this->findModel($companyId);
 		if($model->load($_POST) && $model->validate()) {
 			Func::uploadImage($model, 'logo');
